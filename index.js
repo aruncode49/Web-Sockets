@@ -26,6 +26,9 @@ io.on("connection", (socket) => {
   socket.on("client-message", (message) => {
     console.log(message);
   });
+
+  //   send message from server to client
+  socket.emit("server-message", "Hello from server!");
 });
 
 // here app.listen is not working because of new httpServer

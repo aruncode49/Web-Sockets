@@ -25,6 +25,11 @@
       //   client socket instance
       const socket = io();
 
+      //   recieve message on client from server
+      socket.on("server-message", (message) => {
+        console.log(message);
+      });
+
       //   send message function
       function sendMessage() {
         // send message from client -> server
