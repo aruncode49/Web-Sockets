@@ -24,11 +24,12 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   // recieve message on server from client
   socket.on("client-message", (message) => {
-    console.log(message);
-  });
+    //   send message from server to a single client
+    // socket.emit("server-message", message);
 
-  //   send message from server to client
-  socket.emit("server-message", "Hello from server!");
+    //   send message from server to all client
+    io.emit("server-message", message);
+  });
 });
 
 // here app.listen is not working because of new httpServer

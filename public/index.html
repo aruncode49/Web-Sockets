@@ -9,7 +9,7 @@
     <h1>Chat App</h1>
 
     <!-- input area -->
-    <input type="text" id="message__input" placeholder="write your message" />
+    <input type="text" id="message__input" placeholder="send your message" />
     <button onclick="sendMessage()" id="send__btn">Send</button>
 
     <!-- message display -->
@@ -21,13 +21,16 @@
       // select elements
       const messageInput = document.getElementById("message__input");
       const sendBtn = document.getElementById("send__btn");
+      const displayMessage = document.getElementById("display__message");
 
       //   client socket instance
       const socket = io();
 
       //   recieve message on client from server
       socket.on("server-message", (message) => {
-        console.log(message);
+        const message_element = document.createElement("p");
+        message_element.textContent = message;
+        displayMessage.appendChild(message_element);
       });
 
       //   send message function
